@@ -1,4 +1,4 @@
-package com.prac.jwtprac.jwt;
+package com.prac.jwtprac.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;

@@ -2,7 +2,6 @@ package com.prac.jwtprac.controller;
 
 
 import com.prac.jwtprac.dto.UserDto;
-import com.prac.jwtprac.entity.User;
 import com.prac.jwtprac.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -33,18 +31,18 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<UserDto> signup(@Valid @RequestBody UserDto userDto) {// 회원가입 @Valid는 워징?
+	public ResponseEntity<UserDto> signup(@Valid @RequestBody UserDto userDto) {
 		return ResponseEntity.ok(userService.signup(userDto));
 	}
 
 	@GetMapping("/user")
-	@PreAuthorize("hasAnyRole('USER','ADMIN')") // PreAuthorize를 통해서 호출 권한을 지정할 수 있다.
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public ResponseEntity<UserDto> getMyUserInfo() {
 		return ResponseEntity.ok(userService.getMyUserWithAuthorities());
 	}
 
 	@GetMapping("/user/{username}")
-	@PreAuthorize("hasAnyRole('ADMIN')") // 해당 api는 어드민만 호출 가능하다.
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	public ResponseEntity<UserDto> getUserInfo(@PathVariable String username) {
 		return ResponseEntity.ok(userService.getUserWithAuthorities(username));
 	}

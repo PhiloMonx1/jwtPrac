@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TokenDto { // 토큰 정보를 리스폰할 때 쓸 것!!
+public class TokenDto {
 
 	private String token;
 }

@@ -20,7 +20,7 @@ public class UserDto {
 	@Size(min = 3, max = 50)
 	private String username;
 
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // 제이슨 프로퍼티?? 쓰기만 허용?? // 패스워드는 읽으면 안돼서 쓰기만 허용하는 것일지도...
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@NotNull
 	@Size(min = 3, max = 100)
 	private String password;
@@ -29,7 +29,7 @@ public class UserDto {
 	@Size(min = 3, max = 50)
 	private String nickname;
 
-	private Set<AuthorityDto> authorityDtoSet; // UserDto from 및 Set<AuthorityDto>는 설명이 없다. 더 공부해볼 것
+	private Set<AuthorityDto> authorityDtoSet;
 
 	public static UserDto from(User user) {
 		if(user == null) return null;

@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Optional;
 
-public class SecurityUtil { //:8: getCurrentUsername메서드 하나만을 가진 클래스
+public class SecurityUtil {
 
 	private static final Logger logger = LoggerFactory.getLogger(SecurityUtil.class);
 
@@ -17,9 +17,7 @@ public class SecurityUtil { //:8: getCurrentUsername메서드 하나만을 가�
 
 	public static Optional<String> getCurrentUsername() {
 		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		//AuthController에서 SecurityContextHolder에 authentication를 적재한다.
-		//하지만 실제 저장되는 시점은 jwt필터의 doFilter메서드가 실행될 때 내부에 포함되어 있다. 윗줄은 뭐지 그럼??
-		//여튼 doFilter메서드가 안에서 저장된 객체가 이때 꺼내진다.
+
 		if (authentication == null) {
 			logger.debug("Security Context에 인증 정보가 없습니다.");
 			return Optional.empty();
@@ -33,6 +31,6 @@ public class SecurityUtil { //:8: getCurrentUsername메서드 하나만을 가�
 			username = (String) authentication.getPrincipal();
 		}
 
-		return Optional.ofNullable(username); // 결국 검증을 통해 유저네임을 리턴해준다.
+		return Optional.ofNullable(username);
 	}
 }

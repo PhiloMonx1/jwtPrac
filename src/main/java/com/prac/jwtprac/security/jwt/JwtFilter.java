@@ -1,4 +1,4 @@
-package com.prac.jwtprac.jwt;
+package com.prac.jwtprac.security.jwt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

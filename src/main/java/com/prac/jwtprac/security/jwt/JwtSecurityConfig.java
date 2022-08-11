@@ -1,4 +1,4 @@
-package com.prac.jwtprac.jwt;
+package com.prac.jwtprac.security.jwt;
 
 import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
